@@ -1,0 +1,3 @@
+# Backend-specific ignores
+# (Common patterns are in root .gitignore)
+data/structure_released.xml

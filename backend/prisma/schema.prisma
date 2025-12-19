@@ -1,0 +1,24 @@
+// Prisma schema for ImageNet taxonomy storage
+// Uses linear path representation with '>' separator
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Synset {
+  id        Int      @id @default(autoincrement())
+  path      String   @unique @db.Text
+  size      Int
+  deleted   Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([path])
+  @@index([deleted])
+  @@index([deleted, path])
+  @@map("synsets")
+}

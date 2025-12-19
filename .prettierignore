@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build output
+dist
+build
+.next
+out
+
+# Generated files
+.prisma
+**/.prisma
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode
+.idea
+.cursor
+
+# Misc
+coverage
+*.log
+.DS_Store
+
