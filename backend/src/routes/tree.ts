@@ -1,23 +1,12 @@
 import { FastifyPluginAsync, FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
-
-export interface TreeNode {
-  name: string;
-  size: number;
-  path?: string;
-  children?: TreeNode[];
-}
+import { TreeNode, TreeResponse } from '@synset-explorer/shared';
 
 const childrenQuerySchema = z.object({
   path: z.string().min(1, 'Path parameter is required'),
 });
 
 type TreeQuerystring = z.infer<typeof childrenQuerySchema>;
-
-interface TreeResponse {
-  tree: TreeNode;
-  totalSynsets: number;
-}
 
 type ChildrenResponse = TreeNode[];
 

@@ -1,24 +1,12 @@
 import { FastifyPluginAsync, FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+import { SearchResult, SearchResponse } from '@synset-explorer/shared';
 
 const searchQuerySchema = z.object({
   q: z.string().min(1, 'Search query cannot be empty').trim(),
 });
 
 type SearchQuerystring = z.infer<typeof searchQuerySchema>;
-
-interface SearchResult {
-  path: string;
-  size: number;
-  name: string;
-  pathParts: string[];
-}
-
-interface SearchResponse {
-  query: string;
-  count: number;
-  results: SearchResult[];
-}
 
 interface ErrorResponse {
   error: string;

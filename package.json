@@ -1,0 +1,21 @@
+{
+  "name": "synset-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspaces --if-present\"",
+    "build": "npm run -w shared build && concurrently \"npm run -w backend build\" \"npm run -w frontend build\""
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "concurrently": "^9.2.1",
+    "prettier": "^3.7.4",
+    "typescript": "^5.7.2"
+  }
+}

@@ -36,7 +36,7 @@ until docker-compose exec -T postgres pg_isready -U ${POSTGRES_USER:-postgres} >
 done
 
 echo ""
-echo "🗄️  Running database migrations..."
+echo "🗄️ Running database migrations..."
 docker-compose exec -T backend npx prisma migrate dev
 
 echo ""
@@ -48,32 +48,18 @@ echo "🌱 Seeding database with ImageNet data..."
 docker-compose exec -T backend npx prisma db seed
 
 echo ""
-echo "📦 Installing backend dependencies locally..."
-cd backend
-if [ ! -d "node_modules" ]; then
-  npm install
-else
-  echo "✅ Backend dependencies already installed"
-fi
+echo "📦 Installing workspace dependencies..."
+npm install
 
 echo ""
-npx prisma generate
-echo "🧬 Generated Prisma client locally for IDE"
-
-echo ""
-echo "📦 Installing frontend dependencies..."
-cd ../frontend
-if [ ! -d "node_modules" ]; then
-  npm install
-else
-  echo "✅ Frontend dependencies already installed"
-fi
+echo "🧬 Generating Prisma client locally for IDE..."
+npm run -w backend db:generate
 
 echo ""
 echo "🎉 Setup complete!"
 echo ""
 echo "Next steps:"
-echo "  1. Start frontend:  cd frontend && npm run dev"
+echo "  1. Start frontend:  npm run -w frontend dev"
 echo "  2. Open browser:    http://localhost:${FRONTEND_PORT}"
 echo "  3. Check health:    http://localhost:${BACKEND_PORT}/health"
 echo ""

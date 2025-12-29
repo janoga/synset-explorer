@@ -1,27 +1,6 @@
-export interface TreeNode {
-  name: string;
-  size: number;
-  path?: string;
-  children?: TreeNode[];
-}
+import type { TreeNode, TreeResponse, SearchResult, SearchResponse } from '@synset-explorer/shared';
 
-export interface TreeResponse {
-  tree: TreeNode;
-  totalSynsets: number;
-}
-
-export interface SearchResult {
-  path: string;
-  size: number;
-  name: string;
-  pathParts: string[];
-}
-
-export interface SearchResponse {
-  query: string;
-  count: number;
-  results: SearchResult[];
-}
+export type { TreeNode, TreeResponse, SearchResult, SearchResponse };
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 

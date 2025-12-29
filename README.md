@@ -12,6 +12,11 @@ ImageNet taxonomy browser built with Fastify, React, and PostgreSQL.
 
 ## Tech Stack
 
+### Monorepo Structure
+
+- **npm workspaces** - Monorepo management
+- **Shared types** - Common TypeScript types between frontend and backend
+
 ### Backend
 
 - **Fastify** - High-performance web framework
@@ -47,14 +52,12 @@ This script will:
 2. Start Docker services (PostgreSQL + Backend)
 3. Run database migrations
 4. Seed the database with ImageNet data
-5. Install backend dependencies locally (for IDE support)
-6. Install frontend dependencies
+5. Install all workspace dependencies locally (for IDE support)
 
 Then start the frontend:
 
 ```bash
-cd frontend
-npm run dev
+npm run -w frontend dev
 ```
 
 **Access the application:**
