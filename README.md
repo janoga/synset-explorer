@@ -2,6 +2,8 @@
 
 ImageNet taxonomy browser built with Fastify, React, and PostgreSQL.
 
+> **Note:** This project is for demonstration purposes only, showcasing my software development skills as of 2026. It is not actively maintained.
+
 ## Features
 
 - 🗂️ **Hierarchical tree visualization** with lazy loading
